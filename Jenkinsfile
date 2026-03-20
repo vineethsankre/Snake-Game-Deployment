@@ -208,3 +208,4 @@ stage('Get Application URL') {
         failure { echo "❌ Pipeline Failed" }
     }
 }
+
