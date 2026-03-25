@@ -26,7 +26,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/vineethsankre/Snake-Game-Deployment.git'
+                git branch: 'main', url: 'https://github.com/vineethsankre/Snake-Game-Deployment.git'
             }
         }
 
