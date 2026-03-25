@@ -5,10 +5,14 @@ pipeline {
         githubPush()
     }
 
+    tools {
+        maven 'Maven3'
+    }
+
     environment {
         DOCKER_CREDS     = credentials('docker')
         SONAR            = credentials('sonar')
-        APP_IMAGE        = "adarshbarkunta/snake-game:latest"
+        APP_IMAGE        = "vineethsankre/snake-game:latest"
         CLUSTER_NAME     = "my-eks-cluster"
         REGION           = "ap-south-1"
         SERVICE_NAME     = "snake-game"
@@ -22,14 +26,14 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/adarsh0331/Project_22_End_to_End_Realtime.git'
+                git 'https://github.com/vineethsankre/Snake-Game-Deployment.git'
             }
         }
 
         stage('Maven Build') {
             when { expression { fileExists('pom.xml') } }
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean package'
             }
         }
 
